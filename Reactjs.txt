@@ -1,0 +1,1758 @@
+React.js
+------------------
+If we use reactjs for development of front end and make some changes it will not render the whole page it will only render part of a page.
+
+It was first used by face book.in the year May 2013.it was open sourced in the year march 2015.
+
+DOM :- document object model.
+
+The dom is created by the browser each time the page is loaded.
+
+so as many times the page is loaded the DOM is created by the browser.
+
+so the perfomance is decresed or become slow.
+---------------------------------------------------------------------
+by using reactjs we can only render a part of a page where changes are made by the developer.
+So the application performence is good.
+-----------------------------------------------------------------------
+face book used reactjs from 2011.it only reload a part of the page where change is made without effecting the whole page.This will drastrically improve the performance of the application.
+
+
+example:-Data coming to the facebook
+1)Intial data  2)realtime data  3)user input
+
+the data will be send to the dispatcher --->store  --->view
+-------------------------------------------------------------------------------
+in reactjs only we have render function which will reander the view and display the output.
+The render function can call another render function and can run recursively.
+Then the change of page is displayed.
+
+---------------------------------------------------------------------------------
+
+what is react.js?
+-------------------------
+1)reactjs is an open source javascript library used to develop user interface.
+
+2)Rectjs was introduced by facebook on May 2013.It was open source in March 2015.
+
+3)Reactjs is concerned with the components that utilizes the javascipt + html .
+
+4)it is basically the view in MVC (model-view-controller).
+
+-----------------------------------------------
+Javascript + Html = React.JS
+
+------------------------------------------------
+React is also called Virtual DOM.
+------------------------------------------------
+React renders and update the Real DOM.(Document Object Model) ---
+In case of previous :-
+------------------------------
+It is create by the browser each time a page is loaded.If we have maded  changes in the pages for five times then 5 times new DOM will be created.It will occupy lot of memory and the perfermance will be slow.    
+
+DOM is a node tree with elements and contents ,object and properties.
+Now when we use Reach.js
+-------------------------------------------
+1)So when change is made in the page the total page is rendered in the virtual DOM.
+2)Then the diffence between the Real  DOM and the virtual DOM is calculated. 
+3)the difference is called patch.
+4)now the patches are added to the real DOM.
+5)the whole application will not render only the patches will render.
+6)this will make our application faster and the performance will increase and the memory used will be less.
+7)no wastage of memory.
+
+--------------------------------------------------
+
+In reactjs the dataflow is unidirectional .
+
+Action --->Dispatcher  --->store --->view 
+
+example:-
+action :- checking of user/password 
+dispactcher :- it will pass the data to the database and do some validation and do some bussiness operations.
+store :- goto the database and do some operation 
+view :- output.
+
+so user has better control over the process flow.
+
+-------------------------------------------------------------------
+
+Reactjs application is loosely coupled.
+----------------------------------------------------------------
+There is only serverside rendering .so the page loading in the clientside is faster.
+--------------------------------------------------------------------
+virtual DOM-Real DOM=patches
+*patches will be applied to the RealDOM and rendering of that part will take place.
+----------------------------------------------------------------------------
+
+advantage of ReactJs
+--------------------------------------
+1)Application performance is increased as it uses virtual DOM.
+2)It can be used in the client as well as server side.
+3)Readability is impoved as it uses .jsx file.it is easy to debug.
+4)It can also use other frameworks easily.(like :- Angularjs,Jquery)
+-----------------------------------------------------------------------------------------------
+
+installation :-
+---------------------------
+we require some library files.
+-----------------------------------------
+1)react.js
+2)JSXTransformer.js
+3)Jquery.min.js
+------------------------------------------------
+
+JSX :- java script syntax extension.
+
+components :- In react all are components like your variables .
+
+
+in react there will be one way data flow.
+
+React can be used for server and client side frameworks.
+
+It covers only view layer.
+
+Components and data patterns improve readability.it can maintain larger apps.
+
+-----------------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------
+1)index.html:- call the main()
+2)App.jsx:- render()
+3)main.js:- it will call the App.jsx
+4)webpack.config.js:- port :8080,server side setting
+-----------------------------------------------------------------------
+
+Components, Props and State 
+
+Props & State 
+There are two types of data that control a component: props and state.
+ Props are set by the parent and they are fixed throughout the lifetime of a component. 
+For data that is going to change, we have to use state.
+
+Props 
+Most components can be customized with different parameters when they are created. These creation parameters are called props.
+--------------------------------------------
+import React from 'react';
+
+class App extends React.Component {
+   render() {
+      return (
+        <h1>Hello</h1>
+      );
+   }
+}
+class Header extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1>Header</h1>
+         </div>
+      );
+   }
+}
+class Content extends React.Component {
+   render() {
+      return (
+         <div>
+            <h2>Content</h2>
+            <p>The content text!!!</p>
+         </div>
+      );
+   }
+}
+
+class Content1 extends React.Component {
+    render() {
+       return (
+          <div>
+             <h2>Content1</h2>
+             <p>The content content text!!!</p>
+          </div>
+       );
+    }
+ }
+ 
+export default Content;
+-----------------------------------------------------
+import React from 'react';
+
+class App extends React.Component {  <-----main class
+   render() {
+      return (
+        <div>
+        <Header/>
+        <Content />
+        <Footer />
+        </div>
+      );
+   }
+}
+class Header extends React.Component {
+   render() {
+      return (
+         <div>
+            <h1>Registration Page</h1>
+            </div>
+      );
+   }
+}
+class Footer extends React.Component {
+   render() {
+      return (
+         <div>
+          <p>CopyRight @ This is a regsitration Page</p>
+         </div>
+      );
+   }
+}
+
+class Content extends React.Component {
+    render() {
+       return (
+          <div>
+             
+             Enter your Name<input type="text" name="t1" size="20"/>
+          </div>
+       );
+    }
+ }
+ 
+export default App;
+---------------------------------------------------------------------------
+State :- It is a place where data is stored .This data can be changed.We can access this data.
+props :- This is constant data.It is fixed throught out the program.
+------------------------------------------------------------------------------
+import React from 'react';
+class App extends React.Component
+{
+  constructor(props) 
+{
+   super(props);     
+    this.state=
+{
+name : "Suvajeet",
+address: "Kolkota"
+}
+  }
+render()
+{
+return(
+<div>
+<h1>{this.state.name}</h1>
+<h1>{this.state.address}</h1>
+</div>
+);
+}
+}
+export default App;
+---------------------------------------------------------------------------------------------------------
+what is use of super constructor before the base class constructor:-
+
+5 base classes each have a single super class while accessing we will refer to a single super class .It acts as a container.
+---------------------------------------------------------------------------------------------------------
+class App extends React.Component
+{
+constructor(props)
+{
+super(props);
+this.state={
+name:"Suvajeet",
+address:"Kolkota"
+}
+}
+render()
+{
+return(
+<div>
+<Name n1 = {this.state.name}/>
+<Address a1 = {this.state.address}/>
+</div>
+);
+}
+}
+class Name extends React.Component
+{
+render()
+{
+return(
+<div>
+<h2>{this.props.n1}</h2>
+</div>
+);
+}
+}
+class Address extends React.Component
+{
+render()
+{
+return(
+<div>
+<h2>{this.props.a1}</h2>
+</div>
+);
+}
+}
+
+----------------------------------------------------
+React.js is all about components :-
+Header,footer,body content once you define we can use it n no of time.
+
+Suppose there is any change in the body content so only that part will render.
+
+-------------------------------------------------------------------------------------------------------------------------
+parent class
+(assign) a=10,b=20
+
+child class
+c=30
+
+child class 
+a,b,c
+------------------------------------------------------------
+
+the child will access the parent class properties.
+
+inheritance :- reusing the parent class properties.
+
+iphone ----6
+(x,y)
+
+iphone----7
+(x,y,z)
+-----------------------------------
+import React from 'react';
+
+class App extends React.Component
+{
+    constructor(props)
+    {
+        super(props);
+        this.state={
+Header:"this is the Header",
+Footer:"this is the Footer"
+        }
+
+    }
+    
+render()
+{
+return(
+<div>
+<h1> {this.state.Header}</h1>
+<h2> {this.state.Footer}</h2>
+</div>
+);
+}}
+
+ App.defaultProps =
+{
+    Header: "This is Header",
+    Footer: "This is Footer"
+}  
+
+export default App;
+---------------------------------------------------------------
+import React from 'react';
+import PropTypes from 'prop-types';
+
+class App extends React.Component
+{
+        
+render()
+{
+return(
+<div>
+<h1> {this.props.Header}</h1>
+<h2> {this.props.Footer}</h2>
+<h1> Hello ,{this.props.name}</h1>
+<h1> Array: {this.props.propArray}</h1>
+<h1> Boolean :{this.props.propBool ? "This is True..." : "This is False..."}</h1>
+<h1> function :{this.props.propFunc(4,6)}</h1>
+<h1> Number: {this.props.propNumber}</h1>
+<h1> String : {this.props.propString}</h1>
+
+</div>
+);
+}}
+
+App.propTypes=
+{
+    name: PropTypes.string.isRequired,
+    propArray: PropTypes.Array,
+    propBool: PropTypes.Boolean,
+    propFunc: PropTypes.function,
+    propNumber: PropTypes.Number,
+    propString: PropTypes.string
+}
+
+App.defaultProps =
+{
+    name:'suvajeet',
+    propArray:[1,2,3,4,5],
+    propBool:false,
+    propFunc: function(x,y)
+    {
+        return x+y;
+    },
+    propNumber: 100,
+    propString: "The end of the prog...."
+}
+
+
+export default App;
+---------------------------------------------------------
+validation props:- propTypes is used for props validation.
+if any of the props is not using the correct type that we have assigned it will show console warning.
+* we can assign or set the values using defaultProps.
+
+import PropTypes from 'prop-types';
+-------------------------------------------------------------------------------------
+state and props:-
+----------------------------------
+set State():-This is the method used to update the state of the component.
+----------------------------------------------------------------------------------------------------- 
+function multiplyBy(multiplier)
+{
+return function update(state)
+{
+return 
+{
+value: state.value * multiplier,
+};
+};
+}
+
+
+class App extends React.Component
+{
+state={ value:10};
+handleMultiplyByFive = () =>
+{
+this.setState(multiplyBy(5));
+}
+render()
+{
+return (
+<div>
+<h1>{this.state.value}</h1>
+<button onClick={this.handleMultiplyByFive}> 5 multiply </button>
+</div>
+);
+}
+}
+------------------------------------------------------------------------------
+class App extends React.Component
+{
+constructor()
+{
+super();
+this.state = {
+data:[]
+}
+this.setStateHandler = this.setStateHandler.bind(this);
+};
+setStateHandler()
+{
+var item ="setState Example..."
+var myArray =this.state.data.slice();
+myArray.push(item);
+this.setState({data: myArray})
+};
+render()
+{
+return(
+<div>
+<button onClick={this.setStateHandler}> Change State </button>
+<h4>State array: {this.state.data}</h4>
+</div>
+);
+}
+}
+
+----------------------------------------------------------------------------------------------
+slice() :- it will divide the data into item or string .
+push() :- adding data to stack.
+----------------------------------------------------------------------------------------------
+
+import React from 'react';
+class App extends React.Component
+{
+constructor()
+{
+super();
+this.state = {
+value:'Please enter your name.'
+}
+this.HandleChange = this.HandleChange.bind(this);
+this.HandleSubmit = this.HandleSubmit.bind(this);
+};
+HandleChange(event)
+{
+  this.setState({value: event.target.value});
+}
+HandleSubmit(event)
+{
+alert("The name submitted was "+this.state.value);
+}
+render()
+{
+return(
+<form onSubmit={this.HandleSubmit}>
+<label>
+  Name :
+  <textarea value={this.state.value} onChange={this.HandleChange} /> 
+  </label>
+  <input type="submit" value="submit"/>
+  </form>
+);
+}
+}
+
+export default App;
+-------------------------------------------------------------
+class App extends React.Component
+{
+constructor()
+{
+super();
+this.state = {
+value:'Please enter your name.',
+value1:'apple'
+}
+this.HandleChange = this.HandleChange.bind(this);
+this.HandleChange1 = this.HandleChange1.bind(this);
+this.HandleSubmit = this.HandleSubmit.bind(this);
+};
+HandleChange(event)
+{
+  this.setState({value: event.target.value}); //target :- the target event property returns the elements that triggers the event.
+}
+
+HandleChange1(event)
+{
+  this.setState({value1: event.target.value}); //target :- the target event property returns the elements that triggers the event.
+}
+
+HandleSubmit(event)
+{
+alert("The name submitted was "+this.state.value);
+alert("The fruit selected was "+this.state.value1);
+
+}
+render()
+{
+return(
+<form onSubmit={this.HandleSubmit}>
+<label>
+  Name :
+  <textarea value={this.state.value} onChange={this.HandleChange} /> 
+  </label>
+  
+  <label>
+    Select your favorite Fruit:
+    <select value={this.state.value1} onChange={this.HandleChange1}>
+    <option value="grapes">Grapes</option>
+    <option value="mangoes">Mangoes</option>
+    <option value="Banana">Banana</option>
+    </select>
+
+  </label>
+
+  <input type="submit" value="submit"/>
+  </form>
+);}}
+
+--------------------------------------------------------------------------------------------------
+parent and child
+--------------------------------------
+import React from 'react';
+
+class App extends React.Component
+{
+constructor(props)
+{
+super(props);
+this.state = {
+data:'Happy Holi',
+}
+this.updatestate = this.updatestate.bind(this);
+};
+
+updatestate()
+{
+this.setState({data: 'wish you a very Happy Holi'})
+}
+
+render()
+{
+return(
+<div>
+<Child mydata = {this.state.data}
+updateStateProp ={this.updatestate}></Child>
+</div>
+);
+}}
+
+class Child extends React.Component
+{
+render()
+{
+return(
+<div>
+<button onclick ={this.props.updateStateProp}>Click here</button>
+<h3>{this.props.mydata}</h3>
+</div>
+);
+}}
+---------------------------
+import React from 'react';
+
+class App extends React.Component
+{
+constructor(props)
+{
+super(props);
+this.state = {
+data:'Happy Holi',
+}
+this.updatestate = this.updatestate.bind(this);
+};
+
+updatestate()
+{
+this.setState({data: 'wish you a very Happy Holi'})
+}
+
+render()
+{
+return(
+<div>
+<Child mydata = {this.state.data}
+updateStateProp ={this.updatestate}></Child>
+</div>
+);
+}}
+
+class Child extends React.Component
+{
+render()
+{
+return(
+<div>
+<button onClick ={this.props.updateStateProp}>Click here</button>
+<h3>{this.props.mydata}</h3>
+</div>
+);
+}}
+
+
+export default App;
+---------------------------------------------------
+import React from 'react';
+class App extends React.Component {
+ render () {
+   return (
+     <form className="demoForm">
+       <h2>Sign up</h2>
+        <div className="form-group">
+         <label htmlFor="Name">Enter your Name</label>
+         <input type="text" className="form-control"
+           name="name" required/>
+       </div>
+       <div className="form-group">
+         <label htmlFor="address">Enter Address</label>
+         <input type="text" className="form-control"
+           name="address" required/>
+       </div>
+       <div className="form-group">
+         <label htmlFor="phone no">Enter phone no</label>
+         <input type="number" className="form-control"
+           name="phone no" required/>
+       </div>
+       <div className="form-group">
+         <label htmlFor="age">Enter your Age</label>
+         <input type="number" className="form-control"
+           name="age" required/>
+       </div>
+       <div className="form-group">
+         <label htmlFor="Country">Enter Counrty</label>
+         <input type="text" className="form-control"
+           name="country" required/>
+       </div>
+       <div className="form-group">
+         <label htmlFor="email">Email address</label>
+         <input type="email" className="form-control"
+           name="email" required/>
+       </div>
+       <div className="form-group">
+         <label htmlFor="password">Password</label>
+         <input type="password" className="form-control"
+           name="password" required/>
+       </div>
+       <button type="submit" className="btn btn-primary">
+          Sign up
+       </button>
+     </form>
+   )
+ }
+}
+export default App;
+  
+
+
+----------------------------------------------------
+import React from 'react';
+class App extends React.Component {
+    constructor(props){
+       super(props);
+
+       this.state = {
+           fields: {},
+           errors: {}
+       }
+    }
+
+    handleValidation(){
+        let fields = this.state.fields;
+        let errors = {};
+        let formIsValid = true;
+
+        //Name
+        if(!fields["name"]){
+           formIsValid = false;
+           errors["name"] = "Cannot be empty";
+        }
+
+        if(typeof fields["name"] !== "undefined"){
+             if(!fields["name"].match(/^[a-zA-Z]+$/)){
+                 formIsValid = false;
+                 errors["name"] = "Only letters";
+             }          
+        }
+
+        //Email
+        if(!fields["email"]){
+           formIsValid = false;
+           errors["email"] = "Cannot be empty";
+        }
+
+        if(typeof fields["email"] !== "undefined"){
+            let lastAtPos = fields["email"].lastIndexOf('@');
+            let lastDotPos = fields["email"].lastIndexOf('.');
+
+            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
+              formIsValid = false;
+              errors["email"] = "Email is not valid";
+            }
+       }
+
+
+
+       this.setState({errors: errors});
+       return formIsValid;
+   }
+
+   contactSubmit(e){
+        e.preventDefault();
+        if(this.handleValidation()){
+           alert("Form submitted");
+        }else{
+           alert("Form has errors.")
+        }
+
+    }
+
+    handleChange(field, e){         
+        let fields = this.state.fields;
+        fields[field] = e.target.value;        
+        this.setState({fields});
+    }
+
+    render(){
+        return (
+            <div>           
+               <form name="contactform" className="contactform" onSubmit= {this.contactSubmit.bind(this)}>
+                    <div className="col-md-6">
+                      <fieldset>
+                           <input ref="name" type="text" size="30" placeholder="Name" onChange={this.handleChange.bind(this, "name")} value={this.state.fields["name"]}/>
+                           <span style={{color: "red"}}>{this.state.errors["name"]}</span>
+                          <br/>
+                         <input refs="email" type="text" size="30" placeholder="Email" onChange={this.handleChange.bind(this, "email")} value={this.state.fields["email"]}/>
+                         <span style={{color: "red"}}>{this.state.errors["email"]}</span>
+                         <br/>
+                         <input refs="phone" type="text" size="30" placeholder="Phone" onChange={this.handleChange.bind(this, "phone")} value={this.state.fields["phone"]}/>
+                         <br/>
+                         <input refs="address" type="text" size="30" placeholder="Address" onChange={this.handleChange.bind(this, "address")} value={this.state.fields["address"]}/>
+                         <br/>
+                         </fieldset>
+                         <input type="submit" value="submit"/>
+                         </div>
+
+              </form>
+            </div>
+      )
+    }
+}
+
+export default App;
+--------------------------------------------------
+import React from 'react';
+function validate(email, password) {
+    // true means invalid, so our conditions got reversed
+    return {
+      email: email.length === 0,
+      password: password.length === 0,
+    };
+  }
+  
+  class App extends React.Component {
+    constructor() {
+      super();
+      this.state = {
+        email: '',
+        password: '',
+        
+        touched: {
+          email: false,
+          password: false,
+        },
+      };
+    }
+    
+    handleEmailChange = (evt) => {
+      this.setState({ email: evt.target.value });
+    }
+    
+    handlePasswordChange = (evt) => {
+      this.setState({ password: evt.target.value });
+    }
+    
+    handleBlur = (field) => (evt) => {
+      this.setState({
+        touched: { ...this.state.touched, [field]: true },
+      });
+    }
+    
+    handleSubmit = (evt) => {
+      if (!this.canBeSubmitted()) {
+        evt.preventDefault();
+        return;
+      }
+      const { email, password } = this.state;
+      alert(`Signed up with email: ${email} password: ${password}`);
+    }
+    
+    canBeSubmitted() {
+      const errors = validate(this.state.email, this.state.password);
+      const isDisabled = Object.keys(errors).some(x => errors[x]);
+      return !isDisabled;
+    }
+    
+    render() {
+      const errors = validate(this.state.email, this.state.password);
+      const isDisabled = Object.keys(errors).some(x => errors[x]);
+      
+      const shouldMarkError = (field) => {
+        const hasError = errors[field];
+        const shouldShow = this.state.touched[field];
+        
+        return hasError ? shouldShow : false;
+      };
+      
+      return (
+        <form onSubmit={this.handleSubmit}>
+          <input
+            className={shouldMarkError('email') ? "error" : ""}
+            type="text"
+            placeholder="Enter email"
+            value={this.state.email}
+            onChange={this.handleEmailChange}
+            onBlur={this.handleBlur('email')}
+          />
+          <input
+            className={shouldMarkError('password') ? "error" : ""}
+            type="password"
+            placeholder="Enter password"
+            value={this.state.password}
+            onChange={this.handlePasswordChange}
+            onBlur={this.handleBlur('password')}
+          />
+          <button disabled={isDisabled}>Sign up</button>
+        </form>
+      )
+    }
+  }
+  
+  
+
+
+export default App;
+------------------------------------------------------------
+app.js
+------------
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
+class App extends React.Component {
+ render() {
+ return (
+ <div>
+ <ul>
+ <li>Home</li>
+ <li>About</li>
+ <li>Contact</li>
+ </ul>
+ {this.props.children}
+ </div>
+ )
+ }
+}
+export default App;
+class Home extends React.Component {
+ render() {
+ return (
+ <div>
+ <h1>Home...</h1>
+ </div>
+ )
+ }
+}
+export default Home;
+class About extends React.Component {
+ render() {
+ return (
+ <div>
+ <h1>About...</h1>
+ </div>
+ )
+ }
+}
+export default About;
+class Contact extends React.Component {
+ render() {
+ return (
+ <div>
+ <h1>Contact...</h1>
+ </div>
+ )
+ }
+}
+-------------------------
+ReactDOM.render((
+ <Router history = {browserHistory}>
+ <Route path = "/" component = {App}>
+ <IndexRoute component = {Home} />
+ <Route path = "home" component = {Home} />
+ <Route path = "about" component = {About} />
+ <Route path = "contact" component = {Contact} />
+ </Route>
+ </Router>
+), document.getElementById('app'))
+
+----------------------------------------------------
+
+
+
+
+
+
+
+
+----------------------------------------------------------------
+
+import React from 'react';
+class App extends React.Component
+{
+constructor()
+{
+super();
+ this.state={
+fields: {},
+errors: {}
+}}
+
+handleValidation()
+{
+var fields=this.state.fields;
+var errors ={};
+var formIsValid=true;
+
+if(!fields["name"])
+{
+formIsValid=false;
+errors["name"]="Name cannot be Empty";
+}
+
+if(typeof fields["name"]!=="undefined")
+{
+if(!fields["name"].match(/^[a-zA-Z]+$/))
+{
+formIsValid =false;
+errors["name"] = "Enter Only Letters";
+}
+}
+
+//email
+if(!fields["email"])
+{
+formIsValid=false;
+errors["email"]="email cannot be Empty";
+}
+
+//phoneno
+if(!fields["phoneno"])
+{
+formIsValid=false;
+errors["phoneno"]="phoneno cannot be Empty";
+}
+
+if(typeof fields["phoneno"]!=="undefined")
+{
+if(!fields["phoneno"].match(/^\d{10}$/))
+{
+formIsValid =false;
+errors["phoneno"] = "It is not a valid phone no";
+}
+}
+
+
+this.setState({errors: errors});
+return formIsValid;
+}
+
+formSubmit(e)
+{
+e.preventDefault();
+if(this.handleValidation())
+{
+alert("form submitted");
+}
+else
+{
+alert("form has error");
+}
+}
+
+handleChanges(field,e)
+{
+let fields=this.state.fields;
+fields[field]=e.target.value;
+this.setState({fields});
+}
+
+render()
+{
+return(
+<div>
+<form name="myform" className="myform" onSubmit={this.formSubmit.bind(this)}>
+<div className="col-md-6">
+<fieldset>
+<input type="text" size="30" placeholder="enter name" onChange={this.handleChanges.bind(this,"name")} value={this.state.fields["name"]}/>
+<span style={{color:"red"}}>{this.state.errors["name"]}</span>
+<br/>
+<input type="email" size="30" placeholder="enter email" onChange={this.handleChanges.bind(this,"email")} value={this.state.fields["email"]}/>
+<span style={{color:"red"}}>{this.state.errors["email"]}</span>
+<br/>
+<input type="number" size="30" placeholder="enter phoneno" onChange={this.handleChanges.bind(this,"phoneno")} value={this.state.fields["phoneno"]}/>
+<span style={{color:"red"}}>{this.state.errors["phoneno"]}</span>
+<br/>
+
+</fieldset>
+<input type="submit" value="submit"/>
+</div>
+</form>
+</div>
+)
+}}
+export default App;
+
+---------------------------------------------------------------------
+display the data which is in JSON format
+---------------------------------------------------------------------
+import React from 'react';
+
+class App extends React.Component
+{
+constructor()
+{
+super();
+this.state={
+data:
+[
+{
+"id":101,
+"name":"suvajeet",
+"email":"suvajeet@gmail.com"
+},
+{
+"empid":102,
+"name":"Koel",
+"email":"koel@gmail.com"
+},
+{
+"empid":103,
+"name":"manasi",
+"email":"manasi@gmail.com"
+}]
+}}
+
+render()
+{
+return (
+<div>
+<Header/>
+<table>
+<tbody>
+{this.state.data.map((i,emp) => <TableRow key= {i} data= {emp}/>)}
+</tbody>
+</table>
+<div>
+);
+}}
+
+class Header extends React.Component
+{
+render()
+{
+return (
+<div>
+<h1>Employee Database </h1>
+</div>
+);
+}}
+
+class TableRow extends React.Component
+{
+render()
+{
+return(
+<tr>
+<td>{this.props.data.empid}</td>
+<td>{this.props.data.name}</td>
+<td>{this.props.data.email}</td>
+</tr>
+);
+}}
+
+export default App;
+----------------------------------------------------
+Refs:-The refs means value of a component.It is used to reset the value.
+example:- we want to clear a data.(reference of a component)
+
+<input id="id" type="text" value="abc" size=30 >
+ 
+<input type="text" refs="abc" size=30 >
+-------------------------------------------------------------------------------------------------------
+import React from 'react';
+import ReactDOM from 'react-dom';
+class App extends React.Component
+{
+constructor()
+{
+super();
+this.state={
+data:' '
+}
+this.updateState = this.updateState.bind(this);
+this.clearInput = this.clearInput.bind(this);
+};
+
+updateState(e)
+{
+this.setState({data: e.target.value});
+}
+
+clearInput()
+{
+this.setState({data: ' '});
+ReactDOM.findDOMNode(this.refs.myinput).focus();
+}
+
+render()
+{
+return(
+<div>
+<input value={this.state.data} onChange = {this.updateState}
+ref="myinput"></input>
+<button onClick = {this.clearInput}>Clear Data</button>
+<h2>{this.state.data}</h2>
+</div>
+);
+}
+}
+export default App;
+-----------------------------------------------------------------------
+import React from 'react';
+import ReactDOM from 'react-dom';
+class App extends React.Component
+{
+constructor()
+{
+super();
+this.state={
+data:' ',
+data1:' '
+}
+this.updateState = this.updateState.bind(this);
+this.updateState1 = this.updateState1.bind(this);
+this.clearInput = this.clearInput.bind(this);
+};
+updateState(e)
+{
+this.setState({data: e.target.value});
+}
+
+updateState1(e)
+{
+this.setState({data1: e.target.value});
+}
+
+clearInput()
+{
+this.setState({data: ' '});
+this.setState({data1: ' '});
+ReactDOM.findDOMNode(this.refs.myinput).focus();
+ReactDOM.findDOMNode(this.refs.myinput1).focus();
+}
+render()
+{
+return(
+    <div>
+Enter Name <input value={this.state.data} ref="myinput" onChange = {this.updateState}></input><br/>
+
+Enter Address<input value={this.state.data1} ref="myinput1"  onChange = {this.updateState1}></input><br/>
+
+<button onClick = {this.clearInput}>Clear Data</button>
+<h2>{this.state.data}</h2>
+<h2>{this.state.data1}</h2>
+</div>
+);
+}
+}
+export default App;
+-------------------------------------------------------------------------
+npm install --save react-router-dom
+--------------------------------------------------------------------------------
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+const BasicExample = () => (
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/topics">Topics</Link>
+        </li>
+      </ul>
+
+      <hr />
+
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/topics" component={Topics} />
+    </div>
+  </Router>
+);
+
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+);
+
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+);
+
+const Topics = ({ match }) => (
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/components`}>Components</Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
+      </li>
+    </ul>
+
+    <Route path={`${match.url}/:topicId`} component={Topic} />
+    <Route
+      exact
+      path={match.url}
+      render={() => <h3>Please select a topic.</h3>}
+    />
+  </div>
+);
+
+const Topic = ({ match }) => (
+  <div>
+    <h3>{match.params.topicId}</h3>
+  </div>
+);
+
+export default BasicExample;
+-------------------------------------------------------------------------
+
+import React from 'react';
+class App extends React.Component {
+constructor() {
+super();
+this.state = {
+data:
+[
+{
+"empid":101,
+"name":"suvajeet",
+"age":"20"
+},
+{
+"empid":102,
+"name":"Koel",
+"age":"20"
+},
+{
+"empid":103,
+"name":"Manasi",
+"age":"20"
+}
+]
+}
+}
+render() {
+return (
+<div>
+<Header/>
+<table border="2">
+<tbody>
+{this.state.data.map((person, i) => <TableRow key = {i} data = {person} />)}
+</tbody>
+</table>
+</div>
+);
+}
+}
+class Header extends React.Component {
+render() {
+return (
+<div>
+<h1>Employee Details</h1>
+</div>
+);
+}
+}
+class TableRow extends React.Component {
+render() {
+return (
+<tr>
+<td>{this.props.data.empid}</td>
+<td>{this.props.data.name}</td>
+<td>{this.props.data.age}</td>
+</tr>
+);
+}
+}
+export default App;
+--------------
+import React from 'react';
+import ReactDOM from 'react-dom';
+class App extends React.Component
+{
+constructor()
+{
+super();
+this.state={
+data:' ',
+data1:' '
+}
+this.updateState = this.updateState.bind(this);
+this.updateState1 = this.updateState1.bind(this);
+this.clearInput = this.clearInput.bind(this);
+};
+updateState(e)
+{
+this.setState({data: e.target.value});
+}
+
+updateState1(e)
+{
+this.setState({data1: e.target.value});
+}
+
+clearInput()
+{
+this.setState({data: ' '});
+this.setState({data1: ' '});
+ReactDOM.findDOMNode(this.refs.myinput).focus();
+ReactDOM.findDOMNode(this.refs.myinput1).focus();
+}
+render()
+{
+return(
+    <div>
+Enter Name <input value={this.state.data} ref="myinput" onChange = {this.updateState}></input><br/>
+
+Enter Address<input value={this.state.data1} ref="myinput1"  onChange = {this.updateState1}></input><br/>
+
+<button onClick = {this.clearInput}>Clear Data</button>
+<h2>{this.state.data}</h2>
+<h2>{this.state.data1}</h2>
+</div>
+);
+}
+}
+export default App;
+
+------------
+
+import React from 'react';
+class App extends React.Component {
+constructor() {
+super();
+this.state = {
+data:
+[
+{
+"empid":101,
+"name":"suvajeet",
+"age":"20"
+},
+{
+"empid":102,
+"name":"Koel",
+"age":"20"
+},
+{
+"empid":103,
+"name":"Manasi",
+"age":"20"
+}
+]
+}
+}
+render() {
+return (
+<div>
+<Header/>
+<table border="2">
+<tbody>
+{this.state.data.map((person, i) => <TableRow key = {i} data = {person} />)}
+</tbody>
+</table>
+</div>
+);
+}
+}
+class Header extends React.Component {
+render() {
+return (
+<div>
+<h1>Employee Details</h1>
+</div>
+);
+}
+}
+class TableRow extends React.Component {
+render() {
+return (
+<tr>
+<td>{this.props.data.empid}</td>
+<td>{this.props.data.name}</td>
+<td>{this.props.data.age}</td>
+</tr>
+);
+}
+}
+export default App;
+--------------
+import React from 'react';
+import ReactDOM from 'react-dom';
+class App extends React.Component
+{
+constructor()
+{
+super();
+this.state={
+data:' ',
+data1:' '
+}
+this.updateState = this.updateState.bind(this);
+this.updateState1 = this.updateState1.bind(this);
+this.clearInput = this.clearInput.bind(this);
+};
+updateState(e)
+{
+this.setState({data: e.target.value});
+}
+
+updateState1(e)
+{
+this.setState({data1: e.target.value});
+}
+
+clearInput()
+{
+this.setState({data: ' '});
+this.setState({data1: ' '});
+ReactDOM.findDOMNode(this.refs.myinput).focus();
+ReactDOM.findDOMNode(this.refs.myinput1).focus();
+}
+render()
+{
+return(
+    <div>
+Enter Name <input value={this.state.data} ref="myinput" onChange = {this.updateState}></input><br/>
+
+Enter Address<input value={this.state.data1} ref="myinput1"  onChange = {this.updateState1}></input><br/>
+
+<button onClick = {this.clearInput}>Clear Data</button>
+<h2>{this.state.data}</h2>
+<h2>{this.state.data1}</h2>
+</div>
+);
+}
+}
+export default App;
+
+----------------------------
+JSON DATA:- 
+----------------------------
+1)we are storing the data.
+2)retriving the data.
+key and value
+--------------------------
+rollno   	details
+--------------------------
+1	x
+2	y
+3	z
+-------------------------
+React keys are used when we work with lists of data
+------------------------------------------------------------------------------------------------------
+The content element will have a index(i) and it will be mapped with the value.
+so we can assign the key as i for each created element.
+-------------------------------------------------------------------------------------
+map:- this function has 2 parameter (key,value)
+
+{this.state.data.map((person, i) => <TableRow key = {i} data = {person} />)}
+
+----------------------------------------------------
+Router :- It is used to navigate the page.
+------------------------------------------------------
+install :- npm install --save react-router-dom
+-------------------------------------------------------------
+import React from "react";
+import {BrowserRouter as Router,Route,Link } from "react-router-dom";
+
+const BasicExample =() =>
+(
+<Router>
+<div>
+<ul>
+<li>
+<Link to="/">Home</Link>
+</li>
+<li>
+<Link to="/about">About</Link>
+</li>
+<li>
+<Link to="/topics">Topics</Link>
+</li>
+</ul>
+<hr/>
+<Route exact path="/" component={Home}/>
+<Route exact path="/about" component={About}/>
+<Route exact path="/topics" component={Topics}/>
+</div>
+</Router>
+);
+
+const Home=() =>(
+<div>
+<h2>Welcome to React.js Home Page</h2>
+</div>
+);
+
+const About=() =>(
+<div>
+<h2>This is About React.js</h2>
+</div>
+);
+
+const Topics=() =>(
+<div>
+<h2>The Topics of  React.js are</h2>
+<ul>
+<li>Refs</li>
+<li>State</li>
+<li>Props</li>
+</ul>
+</div>
+);
+
+export default BasicExample;
+------------------------------------------------------
+import React,{ Component } from "react";
+import {BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Home from './Home';
+import About from './About';
+import Topics from './Topics';
+
+
+class App extends Component
+{
+render()
+{
+return(
+<Router>
+<div>
+<ul>
+<li><Link to="/">Home</Link></li>
+<li><Link to="/about">About</Link></li>
+<li><Link to="/topics">Topics</Link></li>
+</ul>
+<hr/>
+<Route exact path="/" component={Home}/>
+<Route exact path="/about" component={About}/>
+<Route exact path="/topics" component={Topics}/>
+</div>
+</Router>
+);
+}
+}
+export default App;
+
+------------------------------------------------
+import React,{ Component } from "react";
+
+class About extends Component
+{
+render()
+{
+return(
+    <div>
+        <h1>Welcome to About Page</h1>
+    </div>
+);
+}}
+
+export default About;
+---------------------------------------------------------------
+import React,{ Component } from "react";
+
+class Home extends Component
+{
+render()
+{
+return(
+    <div>
+        <h1>Welcome to Home Page</h1>
+    </div>
+);
+}}
+
+export default Home;
+------------------------------------------------------------------
+import React,{ Component } from "react";
+
+class Topic extends Component
+{
+render()
+{
+return(
+    <div>
+    <h2>The Topics of  React.js are</h2>
+<ul>
+<li>Refs</li>
+<li>State</li>
+<li>Props</li>
+</ul>
+</div>
+);
+}}
+
+export default Topic;
+----------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
